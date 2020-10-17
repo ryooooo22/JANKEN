@@ -9,47 +9,45 @@ public class Janken {
 		// プレイヤーの手が何かを表示する
 		while(true){
 			System.out.println("「グー」か「チョキ」か「パー」を入力してね☆");
-
 			Scanner scan = new Scanner(System.in);
-			int PlayerHund = scan.nextInt();
-			if (PlayerHund == 1) {
+			String playerHund = scan.nextLine();
+			if (playerHund.equals("グー")) {
 				System.out.println("あなたが選択した手は「グー」です");
-			} else if (PlayerHund == 2) {
+			} else if (playerHund.equals("チョキ")) {
 				System.out.println("あなたが選択した手は「チョキ」です");
-			} else if (PlayerHund == 3) {
+			} else if (playerHund.equals("パー")) {
 				System.out.println("あなたが選択した手は「パー」です");
-				scan.close();
 			}
-			
+
 			// computerの手を表示する
 			Random rand = new Random();
-			int ComHund = rand.nextInt(2);
-			if (ComHund == 1) {
+			int comHand = rand.nextInt(3);
+			if (comHand == 0) {
 				System.out.println("CPUの手は「グー」です");
-			} else if (ComHund == 2) {
+			} else if (comHand == 1) {
 				System.out.println("CPUの手は「チョキ」です");
-			} else if (ComHund == 3) {
+			} else if (comHand == 2) {
 				System.out.println("CPUの手は「パー」です");
 			}
 			//勝敗判定
-			if((PlayerHund == 1 && ComHund == 1)
-					||(PlayerHund == 2 && ComHund == 2)
-					|| (PlayerHund == 3 && ComHund ==3)){
+			if((playerHund.equals("グー") && comHand == 0)
+					||(playerHund.equals("チョキ") && comHand == 1)
+					|| (playerHund.equals("パー")  && comHand == 2)){
 				System.out.println("あいこdeath");
 				continue;
-			}else if((PlayerHund == 1 && ComHund == 2)
-					||(PlayerHund == 2 && ComHund == 3)
-					|| (PlayerHund == 3 && ComHund == 1)){
+			}else if((playerHund.equals("グー") && comHand == 1)
+					||(playerHund.equals("チョキ") && comHand == 2)
+					|| (playerHund.equals("パー") && comHand == 0)){
 				System.out.println("あなたの勝ちよ");
+				scan.close();
 				break;
 			}else{
 				System.out.println("あなたの負けよ");
+				scan.close();
 				break;
 			}
-			
+
 		}
-		
+
 	}
-	
-}
 
